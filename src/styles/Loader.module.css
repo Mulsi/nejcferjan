@@ -1,0 +1,11 @@
+.loader-container {
+    /* Set the initial opacity to 1 (visible) */
+    opacity: 1;
+    /* Define the transition for opacity */
+    transition: opacity 0.5s ease-out;
+  }
+  
+  .loader-container.hidden {
+    /* When the 'hidden' class is applied, set the opacity to 0 (invisible) */
+    opacity: 0;
+  }
