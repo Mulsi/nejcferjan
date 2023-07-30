@@ -81,12 +81,16 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #262729
+  background: #262729;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+h1, h2, p, a {
+  color: rgb(255 255 255);
 }
 
 @media (prefers-color-scheme: dark) {
