@@ -11,7 +11,7 @@ export default function Footer() {
     return (
         <>
             <div className=''>
-                <div className='language-selector h-24 w-fit right-0 fixed flex bottom-0 items-center justify-end'>
+                <div className='language-selector h-12 md:h-24 w-fit right-0 fixed flex bottom-0 items-center justify-end'>
                     <div className='text-xs flex mx-2'>
                         <Link href={currentUrl} locale="en" scroll={false}>
                             <h2 className={router.locale === "en" ? "underline" : ""}>ENG</h2>

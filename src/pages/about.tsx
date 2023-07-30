@@ -12,7 +12,7 @@ export default function About() {
         <>
             <div>
                 <div className='relative h-24 w-11/12 mx-auto z-20'>
-                    <div className='h-[inherit] w-11/12 fixed flex justify-center items-center'>
+                    <div className='h-[inherit] flex justify-center items-center'>
                         <h1 className="text-sm uppercase">{t('about')}</h1>
                     </div>
                 </div>
