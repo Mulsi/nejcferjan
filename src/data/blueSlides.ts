@@ -27,17 +27,7 @@ import blue26 from '../../public/images/BLUE/NF_20220816_Skydiving_over_Landshut
 import blue27 from '../../public/images/BLUE/NF_20220817_Skydiving_over_Landshut_8378.jpeg'
 import blue28 from '../../public/images/BLUE/NF_20220818_Skydiving_over_Landshut_8722.jpeg'
 import blue29 from '../../public/images/BLUE/R11.jpg'
-
-
-
-const breakpoints = [4320, 2160, 1080, 640, 384, 256, 128];
-
-interface photo {
-    src: string,
-    width: number;
-    height: number;
-    alt: string;
-}
+import { photo } from '@/photo'
 
 const blueSection: photo[] = [
     {

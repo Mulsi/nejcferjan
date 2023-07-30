@@ -1,3 +1,4 @@
+import { photo } from '@/photo'
 import green1 from '../../public/images/GREEN/_C6B4440.jpeg'
 import green2 from '../../public/images/GREEN/_C6B4497-3.jpg'
 import green3 from '../../public/images/GREEN/_C6B8719.jpeg'
@@ -10,17 +11,6 @@ import green9 from '../../public/images/GREEN/NF_20210609_BMXMaze_5688.jpeg'
 import green10 from '../../public/images/GREEN/NF_20210610_BMXMaze_5986.jpeg'
 import green11 from '../../public/images/GREEN/NF_20210610_BMXMaze_6010.jpeg'
 import green12 from '../../public/images/GREEN/NF_20210610_MXMaze_5922.jpeg'
-
-
-
-const breakpoints = [4320, 2160, 1080, 640, 384, 256, 128];
-
-interface photo {
-    src: string,
-    width: number;
-    height: number;
-    alt: string;
-}
 
 const greenSection: photo[] = [
     {

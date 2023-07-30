@@ -10,12 +10,14 @@ import { useRouter } from 'next/router';
 import PhotoAlbum from "react-photo-album";
 import blueSlides from '@/data/blueSlides'
 import greenSlides from '@/data/greenSlides';
+import pastelSlides from '@/data/pastelSlides';
 
 
 export default function Home() {
   const router = useRouter();
   const [indexBlue, setIndexBlue] = useState(-1);
   const [indexGreen, setIndexGreen] = useState(-1);
+  const [indexPastel, setIndexPastel] = useState(-1);
 
   return (
     <>
@@ -54,6 +56,22 @@ export default function Home() {
               slides={greenSlides}
               open={indexGreen >= 0}
               close={() => setIndexGreen(-1)}
+            />
+
+          </div>
+        </div>
+
+        <div className='pastel-section'>
+          <div className='mt-[15px]'>
+            <PhotoAlbum layout='masonry' photos={pastelSlides} renderPhoto={NextJsImage} columns={(containerWidth) => {
+              if (containerWidth < 550) return 2;
+              return 3;
+            }} onClick={({ index: current }) => setIndexPastel(current)} />
+            <Lightbox
+              index={indexPastel}
+              slides={pastelSlides}
+              open={indexPastel >= 0}
+              close={() => setIndexPastel(-1)}
             />
 
           </div>
