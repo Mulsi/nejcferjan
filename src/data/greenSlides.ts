@@ -26,28 +26,28 @@ const greenSection: photo[] = [
         alt: 'Road',
     },
     {
-        src: green3.src,
-        width: 5349,
-        height: 3532,
-        alt: 'Luka Kovačič',
-    },
-    {
-        src: green4.src,
-        width: 3189,
-        height: 2202,
-        alt: 'Mountain runner',
-    },
-    {
         src: green5.src,
         width: 7606,
         height: 5073,
         alt: 'Woods',
     },
     {
+        src: green3.src,
+        width: 5349,
+        height: 3532,
+        alt: 'Luka Kovačič',
+    },
+    {
         src: green6.src,
         width: 5472,
         height: 3648,
         alt: 'Mountains',
+    },
+    {
+        src: green4.src,
+        width: 3189,
+        height: 2202,
+        alt: 'Mountain runner',
     },
     {
         src: green7.src,

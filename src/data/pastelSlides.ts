@@ -1,5 +1,4 @@
 import { photo } from '@/photo'
-import pastel1 from '../../public/images/PASTEL/_C6B1723.jpg'
 import pastel2 from '../../public/images/PASTEL/_C6B6411.jpg'
 import pastel3 from '../../public/images/PASTEL/_C6B6513.jpg'
 import pastel4 from '../../public/images/PASTEL/_C6B7251.jpg'
@@ -15,15 +14,8 @@ import pastel14 from '../../public/images/PASTEL/MitjaObala.jpg'
 import pastel15 from '../../public/images/PASTEL/NejcFerjanRBI.jpg'
 import pastel16 from '../../public/images/PASTEL/NF_20210609_BMXMaze_0508.jpg'
 import pastel17 from '../../public/images/PASTEL/NF_20220816_Skydiving_over_Landshut_7777.jpg'
-import pastel18 from '../../public/images/PASTEL/NF_20220817_Skydiving_over_Landshut_8421.jpg'
 
 const pastelSection: photo[] = [
-    {
-        src: pastel1.src,
-        width: 4528,
-        height: 2808,
-        alt: 'Snowy mountains',
-    },
     {
         src: pastel2.src,
         width: 2170,
@@ -113,12 +105,6 @@ const pastelSection: photo[] = [
         width: 3300,
         height: 2200,
         alt: 'Parachute',
-    },
-    {
-        src: pastel18.src,
-        width: 3300,
-        height: 2215,
-        alt: 'Gliding',
     },
 ];
 

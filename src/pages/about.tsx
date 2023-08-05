@@ -20,15 +20,17 @@ export default function About() {
                     <Image src={feri} alt="Nejc Ferjan portrait" className="w-11/12 sm:w-8/12" />
                 </div>
                 <div className="flex justify-center mt-12">
-                    <p className="text-md font-thin w-11/12">
+                    <p className="text-md text-center font-thin w-11/12 sm:w-8/12">
                         {t('aboutText')}
                     </p>
                 </div>
+
                 <div className="flex flex-col items-center gap-2 mt-12 text-xs">
+                    <h2>{t('getInTouch')}</h2>
+                    <a className="my-2 font-thin" href="mailto:hello@nejcferjan.com">hello@nejcferjan.com</a>
                     <a href='https://www.instagram.com/nejcferjan/' target="_blank">
                         <Image src={instagram} priority alt="Instagram" />
                     </a>
-                    <a href="mailto:hello@nejcferjan.com">hello@nejcferjan.com</a>
                 </div>
                 <div className="flex h-24 items-center justify-center">
                     <Link href='/' className="text-sm uppercase">{t('home')}</Link>

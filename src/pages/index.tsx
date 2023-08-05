@@ -4,20 +4,20 @@ import Footer from './footer'
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import NextJsImage from '../components/NextJsImage'
-
 import { useState } from 'react'
-import { useRouter } from 'next/router';
 import PhotoAlbum from "react-photo-album";
 import blueSlides from '@/data/blueSlides'
 import greenSlides from '@/data/greenSlides';
 import pastelSlides from '@/data/pastelSlides';
-
+import whiteSlides from '@/data/whiteSlides';
+import bnwSlides from '@/data/BnwSlides';
 
 export default function Home() {
-  const router = useRouter();
   const [indexBlue, setIndexBlue] = useState(-1);
   const [indexGreen, setIndexGreen] = useState(-1);
   const [indexPastel, setIndexPastel] = useState(-1);
+  const [indexWhite, setIndexWhite] = useState(-1);
+  const [indexBnw, setIndexBnw] = useState(-1);
 
   return (
     <>
@@ -72,6 +72,38 @@ export default function Home() {
               slides={pastelSlides}
               open={indexPastel >= 0}
               close={() => setIndexPastel(-1)}
+            />
+
+          </div>
+        </div>
+
+        <div className='white-section'>
+          <div className='mt-[15px]'>
+            <PhotoAlbum layout='masonry' photos={whiteSlides} renderPhoto={NextJsImage} columns={(containerWidth) => {
+              if (containerWidth < 550) return 2;
+              return 3;
+            }} onClick={({ index: current }) => setIndexWhite(current)} />
+            <Lightbox
+              index={indexWhite}
+              slides={whiteSlides}
+              open={indexWhite >= 0}
+              close={() => setIndexWhite(-1)}
+            />
+
+          </div>
+        </div>
+
+        <div className='bnw-section'>
+          <div className='mt-[15px]'>
+            <PhotoAlbum layout='masonry' photos={bnwSlides} renderPhoto={NextJsImage} columns={(containerWidth) => {
+              if (containerWidth < 550) return 2;
+              return 3;
+            }} onClick={({ index: current }) => setIndexBnw(current)} />
+            <Lightbox
+              index={indexBnw}
+              slides={bnwSlides}
+              open={indexBnw >= 0}
+              close={() => setIndexBnw(-1)}
             />
 
           </div>
