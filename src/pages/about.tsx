@@ -17,7 +17,7 @@ export default function About() {
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <Image src={feri} alt="Nejc Ferjan portrait" className="w-11/12 sm:w-8/12" />
+                    <Image src={feri} alt="Nejc Ferjan portrait" className="w-11/12 sm:w-8/12" priority />
                 </div>
                 <div className="flex justify-center mt-12">
                     <p className="text-md text-center font-thin w-11/12 sm:w-8/12">
@@ -29,7 +29,7 @@ export default function About() {
                     <h2>{t('getInTouch')}</h2>
                     <a className="my-2 font-thin" href="mailto:hello@nejcferjan.com">hello@nejcferjan.com</a>
                     <a href='https://www.instagram.com/nejcferjan/' target="_blank">
-                        <Image src={instagram} priority alt="Instagram" />
+                        <Image src={instagram} alt="Instagram" />
                     </a>
                 </div>
                 <div className="flex h-24 items-center justify-center">

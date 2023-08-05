@@ -9,7 +9,6 @@ export default function NextJsImage({
     return (
         <div style={{ ...wrapperStyle, position: "relative" }}>
             <Image
-                fill
                 src={photo}
                 placeholder="blur"
                 blurDataURL="https://fakeimg.pl/600x600?text=.&font=bebas"

@@ -21,12 +21,6 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Nejc Ferjan | Photography</title>
-        <meta name="description" content="Explore Nejc Ferjan's photography portfolio. Discover the world through his lens and witness the beauty of life in every frame." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.png" />
-      </Head>
       <Header></Header>
       <main className='w-11/12 mx-auto'>
         <div className='blue-section'>
