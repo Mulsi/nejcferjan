@@ -1,5 +1,4 @@
 import { photo } from '@/photo'
-import white1 from '../../public/images/WHITE/_K4I3555-6.jpeg'
 import white2 from '../../public/images/WHITE/_K4I3618.jpeg'
 import white4 from '../../public/images/WHITE/_K4I4018.jpeg'
 import white6 from '../../public/images/WHITE/_K4I8407c2.jpg'

@@ -12,8 +12,11 @@ export default function About() {
         <>
             <div>
                 <div className='relative h-24 w-11/12 mx-auto z-20'>
-                    <div className='h-[inherit] flex justify-center items-center'>
+                    <div className='h-[inherit] flex items-center justify-between'>
                         <h1 className="text-sm uppercase">{t('about')}</h1>
+                        <div className="flex h-24 items-center justify-center">
+                    <Link href='/' className="text-sm uppercase">{t('home')}</Link>
+                </div>
                     </div>
                 </div>
                 <div className="flex justify-center">
@@ -25,15 +28,12 @@ export default function About() {
                     </p>
                 </div>
 
-                <div className="flex flex-col items-center gap-2 mt-12 text-xs">
+                <div className="flex flex-col items-center gap-2 my-12 text-xs">
                     <h2>{t('getInTouch')}</h2>
                     <a className="my-2 font-thin" href="mailto:hello@nejcferjan.com">hello@nejcferjan.com</a>
                     <a href='https://www.instagram.com/nejcferjan/' target="_blank">
                         <Image src={instagram} alt="Instagram" />
                     </a>
-                </div>
-                <div className="flex h-24 items-center justify-center">
-                    <Link href='/' className="text-sm uppercase">{t('home')}</Link>
                 </div>
                 <Footer />
 

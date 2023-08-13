@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import Loader from './loader';
 import Script from 'next/script'
 import Head from "next/head";
+import { CallCountProvider } from '../contexts/CallCountContext';
 
 const sora = Sora({
   subsets: ['latin'],
@@ -27,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
   })
 
   return (
-    
+
     <main className={sora.className}>
       <Head>
         <title>Nejc Ferjan | Photography</title>
@@ -48,7 +49,9 @@ export default function App({ Component, pageProps }: AppProps) {
         </Script>
       </>
       <Loader loading={loading} />
-      <Component {...pageProps} />
+      <CallCountProvider>
+        <Component {...pageProps} />
+      </CallCountProvider>
     </main>
   )
 }
