@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <main className={sora.className}>
       <Head>
         <title>Nejc Ferjan | Photography</title>
-        <meta name="description" content="Explore Nejc Ferjan's photography portfolio. Discover the world through his lens and witness the beauty of life in every frame." />
+        <meta name="description" content="Explore Nejc Ferjan's photography portfolio. Discover the world through his lens and witness the beauty of life in every frame." key="desc" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
       </Head>
