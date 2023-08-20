@@ -14,7 +14,7 @@ export default function Header() {
                     </div>
 
                     <div>
-                        <Link href="/about" className='text-xs uppercase font-normal mr-2'>{t('about')}</Link>
+                        <Link href="/about" className='text-sm uppercase font-normal mr-2'>{t('about')}</Link>
                     </div>
 
                 </div>
