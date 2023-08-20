@@ -44,7 +44,6 @@ export default function Home() {
 
   function setNextSectionVisible() {
     setCallCount(callCount + 1);
-    console.log(callCount)
   }
 
   const renderNextJsImage = ({
@@ -53,7 +52,7 @@ export default function Home() {
     wrapperStyle,
   }: RenderPhotoProps) => (
     <div style={{ ...wrapperStyle, position: 'relative' }}>
-      <Image src={photo} onLoad={() => setNextSectionVisible()} {...{ alt, title, sizes, className, onClick }} />
+      <Image src={photo} onLoad={() => setNextSectionVisible()} priority {...{ alt, title, sizes, className, onClick }} />
     </div>
   );
 
