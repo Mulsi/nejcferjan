@@ -2,52 +2,76 @@ import Header from './header'
 import Footer from './footer'
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { useState } from 'react'
-// import { useCallCount } from '../contexts/CallCountContext';
+import { useEffect, useState } from 'react'
 import PhotoAlbum, { RenderPhotoProps } from "react-photo-album";
 import Image from "next/image";
-import blueSlidesFirst from '@/data/blueSlidesFirst'
-import blueSlidesSecond from '@/data/blueSlidesSecond'
-import greenSlides from '@/data/greenSlides';
-import pastelSlides from '@/data/pastelSlides';
-import whiteSlides from '@/data/whiteSlides';
-import bnwSlides from '@/data/BnwSlides';
+import allImages from '@/data/images'
 
 export default function Home() {
-  const [indexBlueFirst, setIndexBlueFirst] = useState(-1);
-  const [indexBlueSecond, setIndexBlueSecond] = useState(-1);
-  const [indexGreen, setIndexGreen] = useState(-1);
-  const [indexPastel, setIndexPastel] = useState(-1);
-  const [indexWhite, setIndexWhite] = useState(-1);
-  const [indexBnw, setIndexBnw] = useState(-1);
-  // const { callCount, setCallCount } = useCallCount();
+  const [indexImages, setIndexImages] = useState(-1);
+  const [loadedImages, setLoadedImages] = useState([]);
+  const imagesPerLoad = 20;
+  const [firstImageBatchLoaded, setFirstImageBatchLoaded] = useState(false);
+  const [secondImageBatchLoaded, setSecondImageBatchLoaded] = useState(false);
+  const [thirdImageBatchLoaded, setThirdImageBatchLoaded] = useState(false);
+  const [fourthImageBatchLoaded, setFourthImageBatchLoaded] = useState(false);
 
+  useEffect(() => {
+    const imgs: any = allImages.slice(0, imagesPerLoad);
+    setLoadedImages(imgs);
+  }, []);
 
-  // Load callCount from local storage on initial render
-  // useEffect(() => {
-  //   const storedCallCount = sessionStorage.getItem('callCount');
-  //   if (storedCallCount) {
-  //     setCallCount(Number(storedCallCount));
-  //   }
-  // }, [])
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [loadedImages]);
 
-  // Update callCount in local storage whenever it changes
-  // useEffect(() => {
-  //   sessionStorage.setItem('callCount', callCount.toString());
-  // }, [callCount]);
+  const handleScroll = () => {
+    const percentageScrolled = (window.scrollY / document.body.offsetHeight) * 100;    
 
-  // function incrementCallCount() {
-  //   if (callCount < 76) { 
-  //     const increment = callCount + 1;
-  //     setCallCount(increment);
-  //   }
-  // }
+    if (
+      percentageScrolled >= 5 && percentageScrolled < 20 && !firstImageBatchLoaded
+    ) {
+      // Prvotno je naloženih 20 slik, ko pride čez 5% celotne višine trenutnga scrolla -> naloži nove
+        const firstImgs: any = allImages.slice(
+          loadedImages.length,
+          loadedImages.length + imagesPerLoad
+        );
+        const firsConcImgs: any = [...loadedImages, ...firstImgs]
+        setLoadedImages(firsConcImgs);
+        setFirstImageBatchLoaded(true)
+    } 
+    if (percentageScrolled >= 20 && percentageScrolled < 50 && !secondImageBatchLoaded) {
+      const secondConcatImgs: any = allImages.slice(
+        loadedImages.length,
+        loadedImages.length + imagesPerLoad
+      );
+      const concImgs: any = [...loadedImages, ...secondConcatImgs]  
+      setLoadedImages(concImgs);
+      setSecondImageBatchLoaded(true)       
+    }
+    if (percentageScrolled >= 50 && percentageScrolled < 80 && !thirdImageBatchLoaded) {
+      const thirdConcatImgs: any = allImages.slice(
+        loadedImages.length,
+        loadedImages.length + imagesPerLoad
+      );
+      const concImgs: any = [...loadedImages, ...thirdConcatImgs]  
+      setLoadedImages(concImgs);
+      setThirdImageBatchLoaded(true)       
+    }
+    if (percentageScrolled >= 80 && !fourthImageBatchLoaded) {
+      const thirdConcatImgs: any = allImages.slice(
+        loadedImages.length,
+        loadedImages.length + imagesPerLoad
+      );
+      const concImgs: any = [...loadedImages, ...thirdConcatImgs]  
+      setLoadedImages(concImgs);
+      setFourthImageBatchLoaded(true)       
+    }
 
-  // function setNextSectionVisible() {
-  //   count = count + 1
-  //   console.log(count)
-  //   setCallCount(callCount + 1);
-  // }
+  }
 
   const renderNextJsImage = ({
     photo,
@@ -55,7 +79,7 @@ export default function Home() {
     wrapperStyle,
   }: RenderPhotoProps) => (
     <div style={{ ...wrapperStyle, position: 'relative' }}>
-      <Image src={photo} priority {...{ alt, title, sizes, className, onClick }} />
+      <Image src={photo} {...{ alt, title, sizes, className, onClick }} />
     </div>
   );
 
@@ -65,109 +89,18 @@ export default function Home() {
       <main className='w-11/12 mx-auto'>
         <div className='blue-section-first'>
           <div>
-            <PhotoAlbum layout='masonry' photos={blueSlidesFirst} renderPhoto={renderNextJsImage} columns={(containerWidth) => {
+            <PhotoAlbum layout='masonry' photos={loadedImages} renderPhoto={renderNextJsImage} columns={(containerWidth) => {
               if (containerWidth < 550) return 2;
               return 3;
-            }} onClick={({ index: current }) => setIndexBlueFirst(current)} />
+            }} onClick={({ index: current }) => setIndexImages(current)} />
             <Lightbox
-              index={indexBlueFirst}
-              slides={blueSlidesFirst}
-              open={indexBlueFirst >= 0}
-              close={() => setIndexBlueFirst(-1)}
+              index={indexImages}
+              slides={loadedImages}
+              open={indexImages >= 0}
+              close={() => setIndexImages(-1)}
             />
-
           </div>
         </div>
-
-        {setTimeout((() => { }), 400) &&
-          <div className='blue-section-second'>
-            <div>
-              <PhotoAlbum layout='masonry' photos={blueSlidesSecond} renderPhoto={renderNextJsImage} columns={(containerWidth) => {
-                if (containerWidth < 550) return 2;
-                return 3;
-              }} onClick={({ index: current }) => setIndexBlueSecond(current)} />
-              <Lightbox
-                index={indexBlueSecond}
-                slides={blueSlidesSecond}
-                open={indexBlueSecond >= 0}
-                close={() => setIndexBlueSecond(-1)}
-              />
-
-            </div>
-          </div>
-        }
-
-
-        {setTimeout((() => { }), 800) && <div className='green-section'>
-          <div className='mt-[15px]'>
-            <PhotoAlbum layout='masonry' photos={greenSlides} renderPhoto={renderNextJsImage} columns={(containerWidth) => {
-              if (containerWidth < 550) return 2;
-              return 3;
-            }} onClick={({ index: current }) => setIndexGreen(current)} />
-            <Lightbox
-              index={indexGreen}
-              slides={greenSlides}
-              open={indexGreen >= 0}
-              close={() => setIndexGreen(-1)}
-            />
-
-          </div>
-        </div>
-        }
-
-
-
-        {setTimeout((() => { }), 1200) && <div className='pastel-section'>
-          <div className='mt-[15px]'>
-            <PhotoAlbum layout='masonry' photos={pastelSlides} renderPhoto={renderNextJsImage} columns={(containerWidth) => {
-              if (containerWidth < 550) return 2;
-              return 3;
-            }} onClick={({ index: current }) => setIndexPastel(current)} />
-            <Lightbox
-              index={indexPastel}
-              slides={pastelSlides}
-              open={indexPastel >= 0}
-              close={() => setIndexPastel(-1)}
-            />
-
-          </div>
-        </div>
-        }
-
-        {setTimeout((() => { }), 1400) && <div className='white-section'>
-          <div className='mt-[15px]'>
-            <PhotoAlbum layout='masonry' photos={whiteSlides} renderPhoto={renderNextJsImage} columns={(containerWidth) => {
-              if (containerWidth < 550) return 2;
-              return 3;
-            }} onClick={({ index: current }) => setIndexWhite(current)} />
-            <Lightbox
-              index={indexWhite}
-              slides={whiteSlides}
-              open={indexWhite >= 0}
-              close={() => setIndexWhite(-1)}
-            />
-
-          </div>
-        </div>
-        }
-
-        {setTimeout((() => { }), 1500) && <div className='bnw-section'>
-          <div className='mt-[15px]'>
-            <PhotoAlbum layout='masonry' photos={bnwSlides} renderPhoto={renderNextJsImage} columns={(containerWidth) => {
-              if (containerWidth < 550) return 2;
-              return 3;
-            }} onClick={({ index: current }) => setIndexBnw(current)} />
-            <Lightbox
-              index={indexBnw}
-              slides={bnwSlides}
-              open={indexBnw >= 0}
-              close={() => setIndexBnw(-1)}
-            />
-
-          </div>
-        </div>
-        }
-
       </main>
       <Footer></Footer>
     </>
