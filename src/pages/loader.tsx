@@ -18,10 +18,11 @@ const draw = {
 
 
 
-const Loader = ({loading}: any) => {
+const Loader = ({ loading }: any) => {
     const handleTransitionEnd = () => {
         document.querySelector('.loader')?.classList.add('hidden')
         document.querySelector('body')?.classList.remove('disable-scroll');
+        localStorage.setItem('loaderShown', 'true')
     }
     return (
         <>
@@ -48,6 +49,7 @@ const Loader = ({loading}: any) => {
                     <p>NEJC FERJAN</p>
                 </div>
             </div>
+
         </>
     )
 }

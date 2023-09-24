@@ -1,105 +1,85 @@
 import Header from './header'
 import Footer from './footer'
-import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { useEffect, useState } from 'react'
-import PhotoAlbum, { RenderPhotoProps } from "react-photo-album";
 import Image from "next/image";
-import allImages from '@/data/images'
+import mainBlue from '../../public/images/BLUE/_C6B1723-2.jpg'
+import mainGreen from '../../public/images/GREEN/_C6B4440.jpg'
+import mainPastel from '../../public/images/PASTEL/_I7A0163.jpg'
+import mainWhite from '../../public/images/WHITE/_K4I8407c2.jpg'
+import mainBnw from '../../public/images/BNW/_K4I7049.jpg'
+import Loader from './loader';
+import useTranslation from 'next-translate/useTranslation';
 
 export default function Home() {
-  const [indexImages, setIndexImages] = useState(-1);
-  const [loadedImages, setLoadedImages] = useState([]);
-  const imagesPerLoad = 20;
-  const [firstImageBatchLoaded, setFirstImageBatchLoaded] = useState(false);
-  const [secondImageBatchLoaded, setSecondImageBatchLoaded] = useState(false);
-  const [thirdImageBatchLoaded, setThirdImageBatchLoaded] = useState(false);
-  const [fourthImageBatchLoaded, setFourthImageBatchLoaded] = useState(false);
+  const [showBlueButton, setShowBlueButton] = useState(false);
+  const [showGreenButton, setShowGreenButton] = useState(false);
+  const [showPastelButton, setShowPastelButton] = useState(false);
+  const [showWhiteButton, setShowWhiteButton] = useState(false);
+  const [showBnwButton, setShowBnwButton] = useState(false);
+  const [loading, setLoading] = useState(true)
+  const [storedData, setStoredData] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    const imgs: any = allImages.slice(0, imagesPerLoad);
-    setLoadedImages(imgs);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [loadedImages]);
-
-  const handleScroll = () => {
-    const percentageScrolled = (window.scrollY / document.body.offsetHeight) * 100;    
-
-    if (
-      percentageScrolled >= 5 && percentageScrolled < 20 && !firstImageBatchLoaded
-    ) {
-      // Prvotno je naloženih 20 slik, ko pride čez 5% celotne višine trenutnga scrolla -> naloži nove
-        const firstImgs: any = allImages.slice(
-          loadedImages.length,
-          loadedImages.length + imagesPerLoad
-        );
-        const firsConcImgs: any = [...loadedImages, ...firstImgs]
-        setLoadedImages(firsConcImgs);
-        setFirstImageBatchLoaded(true)
-    } 
-    if (percentageScrolled >= 20 && percentageScrolled < 50 && !secondImageBatchLoaded) {
-      const secondConcatImgs: any = allImages.slice(
-        loadedImages.length,
-        loadedImages.length + imagesPerLoad
-      );
-      const concImgs: any = [...loadedImages, ...secondConcatImgs]  
-      setLoadedImages(concImgs);
-      setSecondImageBatchLoaded(true)       
+    const storedItem: any = localStorage.getItem('loaderShown');
+    if (storedItem) {
+      setStoredData(storedItem);
     }
-    if (percentageScrolled >= 50 && percentageScrolled < 80 && !thirdImageBatchLoaded) {
-      const thirdConcatImgs: any = allImages.slice(
-        loadedImages.length,
-        loadedImages.length + imagesPerLoad
-      );
-      const concImgs: any = [...loadedImages, ...thirdConcatImgs]  
-      setLoadedImages(concImgs);
-      setThirdImageBatchLoaded(true)       
+    if (loading && storedItem !== 'true') {
+      document.querySelector('body')?.classList.add('disable-scroll');
     }
-    if (percentageScrolled >= 80 && !fourthImageBatchLoaded) {
-      const thirdConcatImgs: any = allImages.slice(
-        loadedImages.length,
-        loadedImages.length + imagesPerLoad
-      );
-      const concImgs: any = [...loadedImages, ...thirdConcatImgs]  
-      setLoadedImages(concImgs);
-      setFourthImageBatchLoaded(true)       
-    }
+    const timer = setTimeout((() => {
+      setLoading(false)
+    }), 2500)
+    return () => clearTimeout(timer)
+  })
 
+  const goToBlueDetail = () => {
+    window.location.href = '/blue';
+  }
+  const goToGreenDetail = () => {
+    window.location.href = '/green';
+  }
+  const goToPastelDetail = () => {
+    window.location.href = '/pastel';
+  }
+  const goToWhiteDetail = () => {
+    window.location.href = '/white';
+  }
+  const goToBnwDetail = () => {
+    window.location.href = '/bnw';
   }
 
-  const renderNextJsImage = ({
-    photo,
-    imageProps: { alt, title, sizes, className, onClick },
-    wrapperStyle,
-  }: RenderPhotoProps) => (
-    <div style={{ ...wrapperStyle, position: 'relative' }}>
-      <Image src={photo} {...{ alt, title, sizes, className, onClick }} />
-    </div>
-  );
 
   return (
     <>
+      {!storedData && <Loader loading={loading} />}
       <Header></Header>
       <main className='w-11/12 mx-auto'>
-        <div className='blue-section-first'>
-          <div>
-            <PhotoAlbum layout='masonry' photos={loadedImages} renderPhoto={renderNextJsImage} columns={(containerWidth) => {
-              if (containerWidth < 550) return 2;
-              return 3;
-            }} onClick={({ index: current }) => setIndexImages(current)} />
-            <Lightbox
-              index={indexImages}
-              slides={loadedImages}
-              open={indexImages >= 0}
-              close={() => setIndexImages(-1)}
-            />
+        <div className={`flex flex-col gap-12 justify-center mb-8`}>
+          <div className='blue relative' onMouseEnter={() => setShowBlueButton(true)} onMouseLeave={() => setShowBlueButton(false)}>
+            <Image src={mainBlue} alt="Mountains" priority />
+            <button style={{ opacity: showBlueButton ? 1 : 0 }} className='button-animation absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4 text-xs w-[125px] h-[125px] border-2 border-white rounded-full' onClick={goToBlueDetail}>{t('showMore')}</button>
+            {/* <Link href='/blue' style={{ opacity: showBlueButton ? 1 : 0 }} className='button-animation flex items-center justify-center absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4 text-xs w-[125px] h-[125px] border-2 border-white rounded-full'>{t('showMore')}</Link> */}
           </div>
+          <div className='green relative' onMouseEnter={() => setShowGreenButton(true)} onMouseLeave={() => setShowGreenButton(false)}>
+            <Image src={mainGreen} alt="Bine Žalohar" priority />
+            <button style={{ opacity: showGreenButton ? 1 : 0 }} className='button-animation absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4 text-xs w-[125px] h-[125px] border-2 border-white rounded-full' onClick={goToGreenDetail}>{t('showMore')}</button>
+          </div>
+          <div className='pastel relative' onMouseEnter={() => setShowPastelButton(true)} onMouseLeave={() => setShowPastelButton(false)}>
+            <Image src={mainPastel} alt="Wallrider" priority />
+            <button style={{ opacity: showPastelButton ? 1 : 0 }} className='button-animation absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4 text-xs w-[125px] h-[125px] border-2 border-white rounded-full' onClick={goToPastelDetail}>{t('showMore')}</button>
+          </div>
+          <div className='white relative' onMouseEnter={() => setShowWhiteButton(true)} onMouseLeave={() => setShowWhiteButton(false)}>
+            <Image src={mainWhite} alt="Freeride skiing" priority />
+            <button style={{ opacity: showWhiteButton ? 1 : 0 }} className='button-animation absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4 text-xs w-[125px] h-[125px] border-2 border-white rounded-full' onClick={goToWhiteDetail}>{t('showMore')}</button>
+          </div>
+          <div className='bnw relative' onMouseEnter={() => setShowBnwButton(true)} onMouseLeave={() => setShowBnwButton(false)}>
+            <Image src={mainBnw} alt="Naj Mekinc" priority />
+            <button style={{ opacity: showBnwButton ? 1 : 0 }} className='button-animation absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4 text-xs w-[125px] h-[125px] border-2 border-white rounded-full' onClick={goToBnwDetail}>{t('showMore')}</button>
+          </div>
+
         </div>
       </main>
       <Footer></Footer>

@@ -89,7 +89,10 @@ a {
   text-decoration: none;
 }
 
-h1, h2, p, a {
+h1,
+h2,
+p,
+a {
   color: rgb(255 255 255);
 }
 
@@ -106,4 +109,8 @@ h1, h2, p, a {
 
 .language-selector {
   margin-right: calc((100% - 91.666667%) / 2)
+}
+
+.button-animation {
+  transition: opacity .5s;
 }
