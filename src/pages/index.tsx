@@ -21,8 +21,8 @@ export default function Home() {
   const [storedData, setStoredData] = useState(null);
   const { t } = useTranslation();
   const [innerWidth, setInnerWidth] = useState(0);
+  const [showBlueMobileCta, setShowBlueMobileCta] = useState(false);
   const [showMobileCta, setShowMobileCta] = useState(false);
-  let timer: any = null;
 
   useEffect(() => {
     setInnerWidth(window.innerWidth);
@@ -39,26 +39,29 @@ export default function Home() {
     return () => clearTimeout(timer)
   })
 
-  const handleMobileScroll = () => {
+  const handleBlueMobileTouch = () => {
     if (window.innerWidth < 640) {
-      setShowMobileCta(true);
-
-      if (timer !== null) {
-        clearTimeout(timer);
-      }
-      timer = setTimeout(function () {
-        setShowMobileCta(false);
-      }, 150);
-
+      setShowBlueMobileCta(true);
+    }
+  }
+  const handleBlueMobileTouchEnd = () => {
+    if (window.innerWidth < 640) {
+      setShowBlueMobileCta(false);
     }
   }
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleMobileScroll);
-    return () => {
-      window.removeEventListener("scroll", handleMobileScroll);
-    };
-  }, [])
+  const handleMobileClick = () => {
+    if (window.innerWidth < 640) {
+      setShowMobileCta(true);
+    }
+  }
+
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleMobileScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleMobileScroll);
+  //   };
+  // }, [])
 
   const goToBlueDetail = () => {
     window.location.href = '/blue';
@@ -83,9 +86,9 @@ export default function Home() {
       <Header></Header>
       <main className='w-11/12 mx-auto'>
         <div className={`flex flex-col gap-12 justify-center mb-8`}>
-          <div className='blue relative' onMouseEnter={() => setShowBlueButton(true)} onMouseLeave={() => setShowBlueButton(false)}>
+          <div className='blue relative' onMouseEnter={() => setShowBlueButton(true)} onMouseLeave={() => setShowBlueButton(false)} onTouchStartCapture={handleBlueMobileTouch} onTouchEndCapture={handleBlueMobileTouchEnd}>
             <Image src={mainBlue} alt="Mountains" priority />
-            <button style={{ opacity: showBlueButton ? 1 : showMobileCta ? 1 : 0 }} className='button-animation absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4 text-xs w-[125px] h-[125px] border-2 border-white rounded-full' onClick={goToBlueDetail}>{t('showMore')}</button>
+            <button style={{ opacity: showBlueButton ? 1 : showBlueMobileCta ? 1 : 0 }} className={'button-animation absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4 text-xs w-[125px] h-[125px] border-2 border-white rounded-full'} onClick={goToBlueDetail}>{t('showMore')}</button>
             {/* <Link href='/blue' style={{ opacity: showBlueButton ? 1 : 0 }} className='button-animation flex items-center justify-center absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4 text-xs w-[125px] h-[125px] border-2 border-white rounded-full'>{t('showMore')}</Link> */}
           </div>
           <div className='green relative' onMouseEnter={() => setShowGreenButton(true)} onMouseLeave={() => setShowGreenButton(false)}>
