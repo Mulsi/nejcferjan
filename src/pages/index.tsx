@@ -125,7 +125,7 @@ export default function Home() {
     <>
       {!storedData && <Loader loading={loading} />}
       <Header></Header>
-      <main className='w-11/12 mx-auto'>
+      <main className='w-11/12 flex justify-center mx-auto'>
         <div className={`flex flex-col gap-12 justify-center mb-8`}>
           <div className='blue relative' onMouseEnter={() => setShowBlueButton(true)} onMouseLeave={() => setShowBlueButton(false)} onTouchStart={handleBlueMobileTouch} onTouchEnd={handleBlueMobileTouchEnd}>
             <Image src={mainBlue} alt="Mountains" priority />
