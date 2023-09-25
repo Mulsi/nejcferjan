@@ -5,6 +5,7 @@ import Lightbox from "yet-another-react-lightbox";
 import whiteImages from '../data/white'
 import Header from './header';
 import Footer from './footer';
+import "yet-another-react-lightbox/styles.css";
 export default function White() {
     const [indexImages, setIndexImages] = useState(-1);
 

@@ -5,6 +5,7 @@ import Lightbox from "yet-another-react-lightbox";
 import pastelImages from '../data/pastel'
 import Header from './header';
 import Footer from './footer';
+import "yet-another-react-lightbox/styles.css";
 export default function Pastel() {
     const [indexImages, setIndexImages] = useState(-1);
 

@@ -5,6 +5,7 @@ import Lightbox from "yet-another-react-lightbox";
 import greenImages from '../data/green'
 import Header from './header';
 import Footer from './footer';
+import "yet-another-react-lightbox/styles.css";
 export default function Green() {
     const [indexImages, setIndexImages] = useState(-1);
 

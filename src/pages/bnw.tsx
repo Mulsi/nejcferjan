@@ -5,6 +5,7 @@ import Lightbox from "yet-another-react-lightbox";
 import bnwImages from '../data/bnw'
 import Header from './header';
 import Footer from './footer';
+import "yet-another-react-lightbox/styles.css";
 export default function Bnw() {
     const [indexImages, setIndexImages] = useState(-1);
 
