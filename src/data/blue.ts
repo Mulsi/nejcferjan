@@ -25,7 +25,7 @@ import blue25 from '../../public/images/BLUE/Najvogelhanddrag.jpg'
 import blue26 from '../../public/images/BLUE/NF_20220816_Skydiving_over_Landshut_7842.jpeg'
 import blue27 from '../../public/images/BLUE/NF_20220817_Skydiving_over_Landshut_8378.jpeg'
 import blue28 from '../../public/images/BLUE/NF_20220818_Skydiving_over_Landshut_8722.jpeg'
-
+import blue30 from '../../public/images/BLUE/padre-pokljuka.jpg'
 
 const images: photo[] = [
     {
@@ -71,10 +71,10 @@ const images: photo[] = [
         alt: 'Running',
     },
     {
-        src: blue11.src,
-        width: 1497,
-        height: 1920,
-        alt: 'Shapes',
+        src: blue30.src,
+        width: 1800,
+        height: 1201,
+        alt: 'Downhill',
     },
     {
         src: blue23.src,
@@ -83,11 +83,18 @@ const images: photo[] = [
         alt: 'Snow',
     },
     {
+        src: blue11.src,
+        width: 1497,
+        height: 1920,
+        alt: 'Shapes',
+    },
+    {
         src: blue19.src,
         width: 4545,
         height: 3030,
         alt: 'Hiking',
     },
+
     {
         src: blue17.src,
         width: 4443,

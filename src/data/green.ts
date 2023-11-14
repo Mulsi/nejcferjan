@@ -12,6 +12,7 @@ import green9 from '../../public/images/GREEN/NF_20210609_BMXMaze_5688.jpg'
 import green10 from '../../public/images/GREEN/NF_20210610_BMXMaze_5986.jpg'
 import green11 from '../../public/images/GREEN/NF_20210610_BMXMaze_6010.jpg'
 import green12 from '../../public/images/GREEN/NF_20210610_MXMaze_5922.jpg'
+import green13 from '../../public/images/GREEN/pericnik.jpg'
 
 
 const images: photo[] = [
@@ -34,6 +35,24 @@ const images: photo[] = [
         alt: 'Woods',
     },
     {
+        src: green7.src,
+        width: 1920,
+        height: 1200,
+        alt: 'Downhill',
+    },
+    {
+        src: green13.src,
+        width: 1201,
+        height: 1800,
+        alt: 'Kayak',
+    },
+    {
+        src: green8.src,
+        width: 1920,
+        height: 1200,
+        alt: 'Bine Žalohar',
+    },
+    {
         src: green3.src,
         width: 1920,
         height: 1268,
@@ -50,18 +69,6 @@ const images: photo[] = [
         width: 1920,
         height: 1326,
         alt: 'Mountain runner',
-    },
-    {
-        src: green7.src,
-        width: 1920,
-        height: 1200,
-        alt: 'Downhill',
-    },
-    {
-        src: green8.src,
-        width: 1920,
-        height: 1200,
-        alt: 'Bine Žalohar',
     },
     {
         src: green9.src,

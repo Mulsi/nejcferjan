@@ -4,21 +4,14 @@ import Link from "next/link"
 import useTranslation from 'next-translate/useTranslation';
 import Footer from "./footer";
 import instagram from '../../public/instagram.svg'
-
+import Header from './header'
 
 export default function About() {
     const { t } = useTranslation();
     return (
         <>
             <div>
-                <div className='relative h-24 w-11/12 mx-auto z-20'>
-                    <div className='h-[inherit] flex items-center justify-between'>
-                        <h1 className="text-sm uppercase ml-2">{t('about')}</h1>
-                        <div className="flex h-24 items-center justify-center">
-                    <Link href='/' className="text-sm uppercase mr-2">{t('home')}</Link>
-                </div>
-                    </div>
-                </div>
+                <Header />
                 <div className="flex justify-center">
                     <Image src={feri} alt="Nejc Ferjan portrait" className="w-11/12 sm:w-8/12" priority />
                 </div>
