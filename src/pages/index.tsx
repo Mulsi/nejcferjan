@@ -7,7 +7,7 @@ import mainBlue from '../../public/images/BLUE/_C6B1723-2.jpg'
 import mainGreen from '../../public/images/GREEN/_C6B4440.jpg'
 import mainPastel from '../../public/images/PASTEL/_I7A0163.jpg'
 import mainWhite from '../../public/images/WHITE/_K4I8407c2.jpg'
-import mainBnw from '../../public/images/BNW/_K4I7049.jpg'
+import mainBnw from '../../public/images/BNW/_K4I3668.jpg'
 import Loader from './loader';
 import useTranslation from 'next-translate/useTranslation';
 
@@ -97,13 +97,6 @@ export default function Home() {
     }
   }
 
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleMobileScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleMobileScroll);
-  //   };
-  // }, [])
-
   const goToBlueDetail = () => {
     window.location.href = '/blue';
   }
@@ -145,7 +138,7 @@ export default function Home() {
             <button style={{ opacity: showWhiteButton ? 1 : showWhiteMobileCta ? 1 : 0 }} className='button-animation absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4 text-xs w-[125px] h-[125px] border-2 border-white rounded-full' onClick={goToWhiteDetail}>{t('showMore')}</button>
           </div>
           <div className='bnw relative' onMouseEnter={() => setShowBnwButton(true)} onMouseLeave={() => setShowBnwButton(false)} onTouchStart={handleBnwMobileTouch} onTouchEnd={handleBnwMobileTouchEnd}>
-            <Image src={mainBnw} alt="Naj Mekinc" priority />
+            <Image src={mainBnw} alt="Ollie" priority />
             <button style={{ opacity: showBnwButton ? 1 : showBnwMobileCta ? 1 : 0 }} className='button-animation absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4 text-xs w-[125px] h-[125px] border-2 border-white rounded-full' onClick={goToBnwDetail}>{t('showMore')}</button>
           </div>
 
