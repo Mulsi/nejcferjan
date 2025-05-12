@@ -4,6 +4,7 @@ import white2 from '../../public/images/WHITE/_K4I4018.jpg'
 import white3 from '../../public/images/WHITE/_K4I8407c2.jpg'
 import white4 from '../../public/images/WHITE/DJI_0956.jpg'
 import white5 from '../../public/images/WHITE/summit.jpg'
+import white6 from '../../public/images/WHITE/W.jpg'
 
 
 const images: photo[] = [
@@ -18,6 +19,12 @@ const images: photo[] = [
         src: white2.src,
         width: 1536,
         height: 1920,
+        alt: 'Naj Mekinc',
+    },
+    {
+        src: white6.src,
+        width: 1373,
+        height: 915,
         alt: 'Naj Mekinc',
     },
     {

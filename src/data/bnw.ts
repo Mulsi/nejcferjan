@@ -28,6 +28,12 @@ import bnw27 from '../../public/images/BNW/MK2.jpg'
 import bnw28 from '../../public/images/BNW/mulltext3.jpg'
 import bnw29 from '../../public/images/BNW/rbilukafinal.jpg'
 import bnw30 from '../../public/images/BNW/RSN2.jpg'
+import bnw31 from '../../public/images/BNW/BW.jpg'
+import bnw32 from '../../public/images/BNW/BW1.jpg'
+import bnw33 from '../../public/images/BNW/BW2.jpg'
+import bnw34 from '../../public/images/BNW/BW3.jpg'
+import bnw35 from '../../public/images/BNW/BW4.jpg'
+import bnw36 from '../../public/images/BNW/BW5.jpg'
 
 const images: photo[] = [
     {
@@ -203,6 +209,42 @@ const images: photo[] = [
         width: 1759,
         height: 1097,
         alt: 'Turn',
+    },
+    {
+        src: bnw31.src,
+        width: 1920,
+        height: 1281,
+        alt: 'Naj Mekinc',
+    },
+    {
+        src: bnw32.src,
+        width: 1920,
+        height: 1280,
+        alt: 'Naj Mekinc',
+    },
+    {
+        src: bnw33.src,
+        width: 1536,
+        height: 1920,
+        alt: 'Naj Mekinc',
+    },
+    {
+        src: bnw34.src,
+        width: 1536,
+        height: 1920,
+        alt: 'Handplant',
+    },
+    {
+        src: bnw35.src,
+        width: 1920,
+        height: 1281,
+        alt: 'Naj Mekinc',
+    },
+    {
+        src: bnw36.src,
+        width: 1536,
+        height: 1920,
+        alt: 'Jani Taler',
     },
 ];
 

@@ -26,6 +26,13 @@ import blue26 from '../../public/images/BLUE/NF_20220816_Skydiving_over_Landshut
 import blue27 from '../../public/images/BLUE/NF_20220817_Skydiving_over_Landshut_8378.jpeg'
 import blue28 from '../../public/images/BLUE/NF_20220818_Skydiving_over_Landshut_8722.jpeg'
 import blue30 from '../../public/images/BLUE/padre-pokljuka.jpg'
+import blue31 from '../../public/images/BLUE/B1.jpg'
+import blue32 from '../../public/images/BLUE/B2.jpg'
+import blue33 from '../../public/images/BLUE/B3.jpg'
+import blue34 from '../../public/images/BLUE/B4.jpg'
+import blue35 from '../../public/images/BLUE/B5.jpg'
+import blue36 from '../../public/images/BLUE/B6.jpg'
+import blue37 from '../../public/images/BLUE/B7.jpg'
 
 const images: photo[] = [
     {
@@ -108,10 +115,10 @@ const images: photo[] = [
         alt: 'Winter camp',
     },
     {
-        src: blue5.src,
+        src: blue31.src,
         width: 1920,
-        height: 1280,
-        alt: 'Ski touring',
+        height: 1281,
+        alt: 'Slackline',
     },
     {
         src: blue1.src,
@@ -126,6 +133,24 @@ const images: photo[] = [
         alt: 'Backcountry snowboarding',
     },
     {
+        src: blue37.src,
+        width: 1920,
+        height: 1281,
+        alt: 'Slackline',
+    },
+    {
+        src: blue20.src,
+        width: 5461,
+        height: 3616,
+        alt: 'Fog',
+    },
+    {
+        src: blue5.src,
+        width: 1920,
+        height: 1280,
+        alt: 'Ski touring',
+    },
+    {
         src: blue15.src,
         width: 1920,
         height: 1200,
@@ -136,12 +161,6 @@ const images: photo[] = [
         width: 5257,
         height: 3505,
         alt: 'Snowbarder',
-    },
-    {
-        src: blue20.src,
-        width: 5461,
-        height: 3616,
-        alt: 'Fog',
     },
     {
         src: blue21.src,
@@ -190,6 +209,36 @@ const images: photo[] = [
         width: 1920,
         height: 1903,
         alt: 'Surfing',
+    },
+    {
+        src: blue32.src,
+        width: 1536,
+        height: 1920,
+        alt: 'Handplant',
+    },
+    {
+        src: blue33.src,
+        width: 1920,
+        height: 1200,
+        alt: 'Backcountry skiing',
+    },
+    {
+        src: blue34.src,
+        width: 1281,
+        height: 1920,
+        alt: 'Backcountry skiing',
+    },
+    {
+        src: blue35.src,
+        width: 1200,
+        height: 1500,
+        alt: 'Snowboarder',
+    },
+    {
+        src: blue36.src,
+        width: 1920,
+        height: 1281,
+        alt: 'Backcountry skiing',
     },
 ];
 
